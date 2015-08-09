@@ -14,3 +14,13 @@ hpc <- transform(hpc_to_use, Global_active_power = as.numeric(Global_active_powe
 hpc <- transform(hpc, Date = as.Date(Date, "%d/%m/%Y"))
 hpc <- transform(hpc, datetime = as.character(paste(as.character(Date), Time)))
 hpc <- transform(hpc, datetime = strptime(datetime, format = "%Y-%m-%d %H:%M:%S"))
+
+#now for the plots
+png(filename = "Plot1.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white")
+
+hist(hpc$Global_active_power,col = "red", main = "Global Active Power", xlab = "Global active power (kilowatts)")
+
+dev.off()
+
